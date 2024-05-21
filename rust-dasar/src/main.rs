@@ -662,3 +662,26 @@ fn nama_slice(){
      let last_name:&str = &name[6..];
      println!("{}",last_name);
 }
+
+
+// membuat Struct
+
+struct Person {
+    first_name: String,
+    last_name: String,
+    age: u8,
+}
+#[test]
+
+fn test_struct_person(){
+    let first_name=String:: from ("Bagas");
+    let last_name=String:: from ("Aditia Rahman");
+    let person = Person {
+        first_name,
+        last_name,
+        age: 20,
+    };
+    println!("{}",person.first_name);
+    println!("{}",person.last_name);
+    println!("{}",person.age);
+}
