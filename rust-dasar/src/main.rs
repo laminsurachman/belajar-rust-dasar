@@ -671,6 +671,12 @@ struct Person {
     last_name: String,
     age: u8,
 }
+
+impl Person{
+    fn say_helo(&self, name:&str){
+        println!("Hello, {} my name is {}", name, self.first_name);
+    }
+}
 #[test]
 
 fn test_struct_person(){
@@ -685,3 +691,79 @@ fn test_struct_person(){
     println!("{}",person.last_name);
     println!("{}",person.age);
 }
+   
+#[test]
+fn test_methode(){
+    let first_name=String:: from ("Bagas");
+    let last_name=String:: from ("Aditia Rahman");
+    let person = Person {
+        first_name,
+        last_name,
+        age: 20,
+    };
+    person.say_helo("lina");
+}
+
+//associated funcsion
+struct GeoPoint(f64, f64);
+
+impl GeoPoint{
+    fn new(long:f64, lat:f64) -> GeoPoint{ // new bukan methode tapi asosiasi func
+        GeoPoint(long,lat)
+    }
+}
+
+#[test]
+fn test_methode_new(){
+    let geo_point: GeoPoint = GeoPoint::new(10.0,10.0);
+    println!("long :{}",geo_point.0);
+    println!("lat  :{}",geo_point.1);
+}
+
+// Enumeration atau Enum tipe data untuk mengumpulan kemungkinan value
+
+enum Level {
+    Low,
+    Medium,
+    High,
+}
+#[test]
+
+fn test_enum(){
+    let _level1: Level = Level:: Low;  
+    let _level2: Level = Level:: Medium; 
+    let _level3: Level = Level:: High;
+}
+
+//Enum Data
+
+enum Payment{
+    //card Number
+    CreditCart(String),
+    //Bank Transfer
+    BankTransfer(String,String),
+    //Ewalet name, ewalet number
+    Ewallet(String,String),
+
+
+}
+// enum Methode
+impl Payment{
+    fn pay(&self, amount:u32){
+        println!("Paying Amount : {}", amount);
+    }
+}
+#[test]
+
+fn test_payment(){
+    let _payment1: Payment = Payment::CreditCart(String::from("12343234"));
+    _payment1.pay(235000);
+    let _payment2: Payment = Payment::BankTransfer(String::from("BRI"), String::from("12343234"));
+    _payment2.pay(350000);
+    let _payment3: Payment = Payment::Ewallet(String::from("OVO"), String::from("12343234"));
+    _payment3.pay(150000);
+}
+
+
+
+//Pattern Matching atau percabangan
